@@ -1,5 +1,5 @@
 import style from "./Page.module.scss";
-import { UserCard } from "@/pages/UserCard";
+import { UserCard } from "@/entities/ui/UserCard";
 
 const Page = () => {
   
