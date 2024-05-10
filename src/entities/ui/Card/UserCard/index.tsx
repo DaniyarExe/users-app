@@ -1,8 +1,8 @@
+import { FC } from "react";
 import style from "./styles.module.scss";
-import axiosInstances from "@/shared/api/axiosInstance";
+import { Users } from "@/shared";
 
-export const UserCard = () => {
-  axiosInstances("/users");
+export const UserCard: FC<Users> = ({ name, catchPhrase, id }) => {
 
   return (
     <section>
@@ -12,8 +12,8 @@ export const UserCard = () => {
             <div className={style.card}>
               <span className={style.overlay}></span>
               <div className={style.cardContent}>
-                <h2 className={style.name}>David Dell</h2>
-                <p className={style.description}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime repudiandae quos consectetur delectus vel fugiat fugit deserunt saepe ex maiores?</p>
+                <h2 className={style.name}>{name}</h2>
+                <p className={style.description}>{catchPhrase}</p>
 
                 <button className={style.Edit}>Edit</button>
                 <button className={style.Delete}>Delete</button>
