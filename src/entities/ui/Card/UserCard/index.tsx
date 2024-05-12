@@ -1,6 +1,7 @@
 import { FC } from "react";
 import style from "./styles.module.scss";
-import { Users } from "@/shared";
+import { Users, Button } from "@/shared";
+import { useUsers } from "@/entities/model/useUsers"
 
 export const UserCard: FC<Users> = ({ name, catchPhrase }) => {
   return (
@@ -12,8 +13,8 @@ export const UserCard: FC<Users> = ({ name, catchPhrase }) => {
             <h2 className={style.name}>{name}</h2>
             <p className={style.description}>{catchPhrase}</p>
             <div className={style.MainBtn}>
-              <button className={style.Edit}>Edit</button>
-              <button className={style.Delete}>Delete</button>
+              <Button >Edit</Button>
+              <Button>Delete</Button>
             </div>
           </div>
         </div>
