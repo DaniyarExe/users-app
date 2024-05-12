@@ -1,53 +1,81 @@
-body{
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.card{
-    width: 320px;
-    border-radius: 25px;
-    background-color: #fff;
+.Main {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 320px);
+  justify-content: center;
 }
 
-.slideContent{
-    margin: 0 40px;
+.card {
+  width: 320px;
+  margin: 0 10px;
+  border-radius: 25px;
+  background-color: #fff;
+  margin-bottom: 20px;
 }
 
-.cardContent{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 10px 14px;
+.slideContent {
+  margin: 0 40px;
 }
 
-.name{
-    font-size: 18px;
-    font-weight: 500;
-    color:  #333;
-}
-.description{
-    font-size: 14px;
-    color: #707070;
-    text-align: center;
+.cardContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 14px;
 }
 
-.button{
-    border: none;
+.name {
+  font-size: 18px;
+  font-weight: 500;
+  color: #333;
+}
+.description {
+  font-size: 14px;
+  color: #707070;
+  text-align: center;
+}
+
+.overlay {
+  position: absolute;
+  background-color: #4070f4;
+  border-radius: 25px 25px 0 25px;
+}
+
+.MainBtn {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  .Edit {
     font-size: 16px;
+    border: none;
     color: #fff;
-    padding: 8px 16px;
+    background-color: #4070f4;
     border-radius: 6px;
-    margin: 14px;
     cursor: pointer;
-    transition: all 0.3 ease;
-}
-// .button:hover{
-
-// }
-
-.overlay{
-    position: absolute;
-    background-color: #4070F4;
+    transition: all 0.3s ease;
+    &:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
+  }
+  .Delete {
+    font-size: 16px;
+    border: none;
+    color: #fff;
+    background-color: #f44070;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    &:hover {
+        transform: scale(1.1);
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
+  }
 }

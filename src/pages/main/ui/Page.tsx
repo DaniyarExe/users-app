@@ -1,12 +1,9 @@
+import { UsersView } from "@/widgets/Users";
 import style from "./Page.module.scss";
-import { UserCard } from "@/entities/ui/Card/UserCard";
 
 const Page = () => {
-  
   return (
-    <section>
-      <UserCard />
-    </section>
+      <UsersView />
   );
 };
 
