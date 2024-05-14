@@ -1,20 +1,26 @@
 // import { Users } from "./types" 
 import { useState } from "react"
+import { Users } from "./types"
 
 const useUsers = () => {
-  // const [ UserList, setUserList ] = useState<Users[]>()
-  const [ editId, setEditId ] = useState(-1)
+  const [userList, setUserList] = useState<Users[]>([])
 
-  const handleEdit = (id: number) => {
-    setEditId(id)
+  const editUser = (updUser: Users) => {
+    setUserList(User => User.map(user => user.id === updUser.id ? updUser : user));
+
+    const updatedUserData = userList.map(user => user.id === updUser.id ? updUser : user)
+    localStorage.setItem('users', JSON.stringify(updatedUserData))
   }
 
-  const handleDelete = () => {
+  const deleteUser = (userId: number): void => {
+    setUserList(User => User.filter(user => user.id !== userId))
 
+    const updatedUserData = userList.map(user => user.id !== userId)
+    localStorage.setItem('users', JSON.stringify(updatedUserData))
   }
 
   return (
-    {handleEdit, handleDelete}
+    {editUser, deleteUser}
   )
 }
 

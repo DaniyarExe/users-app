@@ -2,18 +2,17 @@ import { UserCard } from "@/entities/ui/Card/UserCard";
 import { Users } from "@/entities"; 
 import { useEffect, useState } from "react";
 import axiosIns from "@/shared/api/axiosInstance"
-import { Button } from "@/shared";
 
 const ShowUser = () => {
   
   const [ user, setUSer ] = useState<Users[]>([])
 
-  useEffect( () => {
-    axiosIns("/users")
-        .then(res => setUSer(res.data))
-        .catch(err => console.log(err)
-        )
-  })
+  // useEffect( () => {
+  //   axiosIns("/users")
+  //       .then(res => setUSer(res.data))
+  //       .catch(err => console.log(err)
+  //       )
+  // })
 
 
   return (
