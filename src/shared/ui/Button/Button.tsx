@@ -3,12 +3,12 @@ import style from "./Button.module.scss"
 
 interface ButtonProps {
     children: string
-    onclick: () => void
+    onСlick: () => void
 }
 
-const Button: FC<ButtonProps> = ({ children }) => {
+const Button: FC<ButtonProps> = ({ children, onСlick }) => {
   return (
-    <button className={style.MainBtn}>{children}</button>
+    <button className={style.MainBtn} onClick={onСlick}>{children}</button>
   )
 }
 

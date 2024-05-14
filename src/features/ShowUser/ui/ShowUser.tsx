@@ -1,24 +1,25 @@
-import { Users_List } from "@/entities/model/const";
 import { UserCard } from "@/entities/ui/Card/UserCard";
-import { Users } from "@/shared"; 
+import { Users } from "@/entities"; 
 import { useEffect, useState } from "react";
+import axiosIns from "@/shared/api/axiosInstance"
+import { Button } from "@/shared";
 
 const ShowUser = () => {
-  const [users, setUsers] = useState<Users[]>([]); 
+  
+  const [ user, setUSer ] = useState<Users[]>([])
 
-  useEffect(() => {
-    Users_List()
-    .then(data => {
-        setUsers(data);
-    })
-    .catch(error => {
-        console.log(error);
-    });
-  }, []);
+  useEffect( () => {
+    axiosIns("/users")
+        .then(res => setUSer(res.data))
+        .catch(err => console.log(err)
+        )
+  })
+
+
   return (
     <>
-      {users && users.map((user: Users) => ( 
-        <UserCard key={user.id} {...user} />
+      {user && user.map((user: Users) => ( 
+        <UserCard key={user.id} {...user} />  
       ))}
     </>
   );

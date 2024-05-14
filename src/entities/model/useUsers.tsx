@@ -1,29 +1,20 @@
-import { Users } from "@/shared"
-import { todo } from "node:test"
+// import { Users } from "./types" 
 import { useState } from "react"
 
 const useUsers = () => {
-  const [ UserList, setUserList ] = useState<Users[]>()
+  // const [ UserList, setUserList ] = useState<Users[]>()
+  const [ editId, setEditId ] = useState(-1)
 
-  const editUser = (id: number, changes: Users): void => {
-    const updUser = UserList?.map((user) => {
-      user.id === id
-      ? {
-        ...user,
-        changes
-      }
-      :todo
-    })
+  const handleEdit = (id: number) => {
+    setEditId(id)
   }
 
-  const deleteUser = (userId: number): void => {
-    const updUser = UserList?.filter(({id}) => {
-      id !== userId
-    })
+  const handleDelete = () => {
+
   }
 
   return (
-    {deleteUser, editUser}
+    {handleEdit, handleDelete}
   )
 }
 

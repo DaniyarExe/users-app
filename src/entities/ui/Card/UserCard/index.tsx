@@ -1,9 +1,13 @@
 import { FC } from "react";
 import style from "./styles.module.scss";
-import { Users, Button } from "@/shared";
-import { useUsers } from "@/entities/model/useUsers"
+import { Users } from "@/entities/model"; 
+import { Button } from "@/shared";
+import useUsers from "@/entities/model/useUsers";
 
-export const UserCard: FC<Users> = ({ name, catchPhrase }) => {
+export const UserCard: FC<Users> = ({ name, catchPhrase, id }) => {
+
+  const {handleDelete, handleEdit} = useUsers();
+
   return (
     <section className={style.Main}>
       <div className={style.cardWrapper}>
@@ -13,8 +17,8 @@ export const UserCard: FC<Users> = ({ name, catchPhrase }) => {
             <h2 className={style.name}>{name}</h2>
             <p className={style.description}>{catchPhrase}</p>
             <div className={style.MainBtn}>
-              <Button >Edit</Button>
-              <Button>Delete</Button>
+              <Button onСlick={() => {handleDelete(id)}}>Edit</Button>
+              <Button onСlick={() => {}}>Delete</Button>
             </div>
           </div>
         </div>
