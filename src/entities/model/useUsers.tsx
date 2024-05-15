@@ -1,27 +1,29 @@
-// import { Users } from "./types" 
-import { useState } from "react"
-import { Users } from "./types"
+import { useState, useEffect } from "react";
+import { Users } from "./types";
 
 const useUsers = () => {
-  const [userList, setUserList] = useState<Users[]>([])
+  const [userList, setUserList] = useState<Users[]>([]);
+
+  useEffect(() => {
+    const usersData = localStorage.getItem('users');
+    if (usersData) {
+      setUserList(JSON.parse(usersData));
+    }
+  }, []);
 
   const editUser = (updUser: Users) => {
-    setUserList(User => User.map(user => user.id === updUser.id ? updUser : user));
-
-    const updatedUserData = userList.map(user => user.id === updUser.id ? updUser : user)
-    localStorage.setItem('users', JSON.stringify(updatedUserData))
-  }
+    const updatedUserList = userList.map(user => user.id === updUser.id ? updUser : user);
+    setUserList(updatedUserList);
+    localStorage.setItem('users', JSON.stringify(updatedUserList));
+  };
 
   const deleteUser = (userId: number): void => {
-    setUserList(User => User.filter(user => user.id !== userId))
+    const updatedUserList = userList.filter(user => user.id !== userId);
+    setUserList(updatedUserList);
+    localStorage.setItem('users', JSON.stringify(updatedUserList));
+  };
 
-    const updatedUserData = userList.map(user => user.id !== userId)
-    localStorage.setItem('users', JSON.stringify(updatedUserData))
-  }
+  return { userList, editUser, deleteUser, setUserList };
+};
 
-  return (
-    {editUser, deleteUser}
-  )
-}
-
-export default useUsers
+export default useUsers;

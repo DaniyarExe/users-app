@@ -1,24 +1,20 @@
+import { useEffect } from "react";
+import { Users } from "@/entities";
 import { UserCard } from "@/entities/ui/Card/UserCard";
-import { Users } from "@/entities"; 
-import { useEffect, useState } from "react";
-import axiosIns from "@/shared/api/axiosInstance"
+import { checkLocalStorage } from "@/features/CheckLocalStorage";
+import useUsers from "@/entities/model/useUsers";
 
 const ShowUser = () => {
-  
-  const [ user, setUSer ] = useState<Users[]>([])
+  const { userList, setUserList } = useUsers();
 
-  // useEffect( () => {
-  //   axiosIns("/users")
-  //       .then(res => setUSer(res.data))
-  //       .catch(err => console.log(err)
-  //       )
-  // })
-
+  useEffect(() => {
+    checkLocalStorage(setUserList);
+  }, [setUserList]);
 
   return (
     <>
-      {user && user.map((user: Users) => ( 
-        <UserCard key={user.id} {...user} />  
+      {userList && userList.map((user: Users) => (
+        <UserCard key={user.id} {...user} />
       ))}
     </>
   );
