@@ -1,4 +1,4 @@
-import { ShowUser } from '@/features/ShowUser/ui'
+import { ShowUser } from '@/features/ShowUser'
 
 const UsersView = () => {
   return (

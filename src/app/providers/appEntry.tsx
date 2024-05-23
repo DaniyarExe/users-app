@@ -1,4 +1,4 @@
-import React from 'react';
+import React = require('react');
 import ReactDOM from 'react-dom/client';
 import BaseLayout from '@/app/baseLayout';
 

@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import { Users } from "@/entities";
-import { UserCard } from "@/entities/ui/Card/UserCard";
+import { UserCard } from "@/entities/ui/UserCard";
 import { checkLocalStorage } from "@/features/CheckLocalStorage";
-import useUsers from "@/entities/model/useUsers";
+import useUsers from "@/entities/hook/useUsers";
 
 const ShowUser = () => {
   const { userList, setUserList } = useUsers();

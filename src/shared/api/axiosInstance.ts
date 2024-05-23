@@ -6,7 +6,4 @@ export const api = axios.create({
     headers: { 'X-Custom-Header': 'foobar' }
 })
 
-
-
-
 export default api;

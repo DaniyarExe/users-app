@@ -1,10 +1,10 @@
-import { FC, useState } from "react";
-import style from "./styles.module.scss";
-import { Users } from "@/entities/model";
-import Button from "@/shared/ui/Button/Button";
-import useUsers from "@/entities/model/useUsers";
+import { FC, useState } from 'react';
+import style from './styles.module.scss';
+import { Users } from '@/entities/model';
+import Button from '@/shared/ui/Button/Button';
+import useUsers from '@/entities/hook/useUsers';
 
-export const UserCard: FC<Users> = ({ name, catchPhrase, id }) => {
+export const UserCard: FC<Users> = ({ id, name, catchPhrase }) => {
   const { editUser, deleteUser } = useUsers();
   const [editUserId, setEditUserId] = useState<number | null>(null);
   const [editName, setEditName] = useState(name);
@@ -31,22 +31,18 @@ export const UserCard: FC<Users> = ({ name, catchPhrase, id }) => {
           <div className={style.cardContent}>
             {editUserId === id ? (
               <div>
+                <input type='text' value={editName} onChange={(e) => setEditName(e.target.value)} />
                 <input
-                  type="text"
-                  value={editName}
-                  onChange={(e) => setEditName(e.target.value)}
-                />
-                <input
-                  type="text"
+                  type='text'
                   value={editCatchPhrase}
                   onChange={(e) => setEditCatchPhrase(e.target.value)}
                 />
-                <Button onClick={() => handleSubmit({ id, name: editName, catchPhrase: editCatchPhrase })}>
+                <Button
+                  onClick={() => handleSubmit({ id, name: editName, catchPhrase: editCatchPhrase })}
+                >
                   Save
                 </Button>
-                <Button onClick={() => setEditUserId(null)}>
-                  Cancel
-                </Button>
+                <Button onClick={() => setEditUserId(null)}>Cancel</Button>
               </div>
             ) : (
               <div>
